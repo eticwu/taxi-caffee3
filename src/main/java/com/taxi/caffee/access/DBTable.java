@@ -1,14 +1,13 @@
 package com.taxi.caffee.access;
 
-import java.util.List;
 
 public class DBTable {
 
     private String name;
     
-    private String pkName;
+    private String remarks;
     
-    private List<DBTableColumn> columnList;
+    private String primaryKey;
 
     public String getName() {
         return name;
@@ -18,19 +17,19 @@ public class DBTable {
         this.name = name;
     }
 
-    public List<DBTableColumn> getColumnList() {
-        return columnList;
-    }
+	public String getRemarks() {
+		return remarks;
+	}
 
-    public void setColumnList(List<DBTableColumn> columnList) {
-        this.columnList = columnList;
-    }
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 
-    public String getPkName() {
-        return pkName;
-    }
+	public String getPrimaryKey() {
+		return primaryKey;
+	}
 
-    public void setPkName(String pkName) {
-        this.pkName = pkName;
-    }
+	public void setPrimaryKey(String primaryKey) {
+		this.primaryKey = primaryKey;
+	}
 }

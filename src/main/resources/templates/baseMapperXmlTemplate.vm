@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="$namespace">
+	<resultMap id="BaseResultMap" type="$entity">
+#foreach($prop in $props)
+#if($prop.isPK)
+		<id property="$prop.name" column="$prop.column"/>
+#else
+		<result property="$prop.name" column="$prop.column" />
+#end
+#end
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		#foreach($prop in $props)#if($velocityCount!=1),#end$prop.column#end
+
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="$">
+		select 
+		<include refid="Base_Column_List" />
+		from $tableName
+		where $idName = #{$idVar}
+	</select>
+	
+</mapper>
+</xml>

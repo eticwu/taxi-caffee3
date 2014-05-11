@@ -2,11 +2,13 @@ package com.taxi.caffee.access;
 
 public class DBTableColumn {
     
-    private String name;
+    private String name = "";
     
-    private String type;
+    private Integer type = 0;
 
-    private String remarks;
+    private String remarks = "";
+    
+    private Boolean isPK = false;
 
     public String getName() {
         return name;
@@ -16,14 +18,6 @@ public class DBTableColumn {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getRemarks() {
         return remarks;
     }
@@ -31,5 +25,25 @@ public class DBTableColumn {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-    
+
+	public Boolean getIsPK() {
+		return isPK;
+	}
+
+	public void setIsPK(Boolean isPK) {
+		this.isPK = isPK;
+	}
+	
+	@Override
+	public String toString() {
+		return "[name:" + name + ", type:" + type + ", isPK:" + isPK + ", remarks:" + remarks + "]";
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
 }

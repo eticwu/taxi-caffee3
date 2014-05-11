@@ -1,0 +1,5 @@
+package $rootPath;
+
+public class $className extends $baseClassName {
+	
+}

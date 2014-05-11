@@ -1,0 +1,33 @@
+package $rootPath;
+
+#foreach($import in $imports)
+import $import
+#end
+#set($left = "(")
+#set($right = ")")
+
+/**
+ * $tableRemarks
+ * @author eticwu
+ * @date $date
+ */
+public class $baseClassName {	
+	#foreach($prop in $props)
+	
+	/**
+     * $prop.remarks
+     */
+	private $prop.type $prop.name;
+	#end
+	#foreach($prop in $props)
+	
+	public $prop.type $prop.gMethod$left$right {
+		return this.$prop.name;
+	}
+	
+	public void $prop.sMethod$left$prop.type $prop.name$right {
+		this.$prop.name = $prop.name;
+	}
+	#end
+
+}

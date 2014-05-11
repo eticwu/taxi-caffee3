@@ -2,9 +2,9 @@ package com.taxi.caffee.process;
 
 public class DataTypeConstant {
 
-    public static Integer DAOTYPE = 0;
+    public static Integer DAO = 0;
     
-    public static Integer ENTITYTYPE = 1;
+    public static Integer ENTITY = 1;
     
-    public static Integer MAPPERXMLTYPE = 2;
+    public static Integer MAPPERXML = 2;
 }
