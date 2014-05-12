@@ -40,14 +40,9 @@ public class CaffeeEngine {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CaffeeEngine engine = new CaffeeEngine("jdbc:mysql://localhost:3306/mini-web", "root", "admin");
-		engine.bootstrap("tb_role", "com.texi.caffee3.entity");
-		engine.bootstrap("tb_authority", "com.texi.caffee3.entity");
-		engine.bootstrap("tb_customer", "com.texi.caffee3.entity");
-		engine.bootstrap("tb_role_auth", "com.texi.caffee3.entity");
-		engine.bootstrap("tb_user", "com.texi.caffee3.entity");
-		engine.bootstrap("tb_user_role", "com.texi.caffee3.entity");
-		
+		CaffeeEngine engine = new CaffeeEngine("jdbc:mysql://localhost:3306/xxx", "xxx", "xxx");
+		String rootPath = "xxx";
+		engine.bootstrap("xx", rootPath);
 	}
 
 }

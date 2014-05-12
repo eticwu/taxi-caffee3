@@ -8,7 +8,6 @@ public class DBConnection {
     private Connection connection;
     
     public DBConnection(String url) {
-	this.connection = DBUtil.getConnection(url);
     }
     
     public List<DBTable> getTables() {

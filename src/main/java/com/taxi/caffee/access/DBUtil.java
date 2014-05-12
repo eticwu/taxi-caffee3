@@ -81,22 +81,24 @@ public class DBUtil {
 		return results;
 	}
 
+	@SuppressWarnings("resource")
 	public static DBTable getTable(String url, String userName,
 			String password, String tableName) throws ClassNotFoundException {
 		DBTable table = new DBTable();
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		String sql = "select TABLE_NAME, TABLE_COMMENT from INFORMATION_SCHEMA.TABLES where TABLE_NAME = \""+ tableName +"\"";
 		try {
 			conn = getConnection(url, userName, password);
-			DatabaseMetaData dbmd = conn.getMetaData();
-			rs = dbmd.getTables(null, "%", tableName, new String[] { "TABLE" });
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				table.setName(rs.getString("TABLE_NAME"));
-				table.setRemarks(rs.getString("REMARKS"));
+				table.setRemarks(rs.getString("TABLE_COMMENT"));
 			}
 			
-			rs = dbmd.getPrimaryKeys(null, null, tableName);
+			rs = conn.getMetaData().getPrimaryKeys(null, null, tableName);
 			String pk = null;
 			while (rs.next()) {
 				pk = rs.getString("COLUMN_NAME");
