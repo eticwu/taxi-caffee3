@@ -1,4 +1,4 @@
-package $rootPath;
+package $entityPath;
 
 #foreach($import in $imports)
 import $import
@@ -11,7 +11,7 @@ import $import
  * @author eticwu
  * @date $date
  */
-public class $baseClassName {	
+public class $className {	
 	#foreach($prop in $props)
 	
 	/**

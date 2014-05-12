@@ -40,9 +40,13 @@ public class CaffeeEngine {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CaffeeEngine engine = new CaffeeEngine("jdbc:mysql://localhost:3306/xxx", "xxx", "xxx");
-		String rootPath = "xxx";
-		engine.bootstrap("xx", rootPath);
+		CaffeeEngine engine = new CaffeeEngine("jdbc:mysql://localhost:3306/sakila", "root", "admin");
+		String rootPath = "com.taxi.coffee3";
+		engine.bootstrap("actor", rootPath);
+		engine.bootstrap("address", rootPath);
+		engine.bootstrap("customer", rootPath);
+		engine.bootstrap("film_actor", rootPath);
+		engine.bootstrap("film_text", rootPath);
 	}
 
 }

@@ -10,9 +10,9 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
-public class BaseDaoProcessor implements DataProcessor {
+public class BaseDaoImplProcessor implements DataProcessor {
 
-    private static BaseDaoProcessor processor = new BaseDaoProcessor();
+    private static BaseDaoImplProcessor processor = new BaseDaoImplProcessor();
 
     @Override
     public Map<String, Object> process(Map<String, Object> params) throws IOException {
@@ -23,7 +23,7 @@ public class BaseDaoProcessor implements DataProcessor {
 	    properties.put("file.resource.loader.class",
 		    "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
 	    engine.init(properties);
-	    temp = engine.getTemplate("./templates/baseDaoTemplate.vm");
+	    temp = engine.getTemplate("./templates/baseDaoImplTemplate.vm");
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
@@ -31,8 +31,8 @@ public class BaseDaoProcessor implements DataProcessor {
 	for(String key : params.keySet()){
 	    context.put(key, params.get(key));
 	}
-	String daoInterfaceName = (String)params.get("daoInterfaceName");
-	BufferedWriter writer = new BufferedWriter(new FileWriter(daoInterfaceName + ".java"));
+	String daoClassName = (String)params.get("daoClassName");
+	BufferedWriter writer = new BufferedWriter(new FileWriter(daoClassName + ".java"));
 	temp.merge(context, writer);
 	writer.flush();
 	writer.close();
@@ -41,14 +41,14 @@ public class BaseDaoProcessor implements DataProcessor {
 
     @Override
     public Integer supportType() {
-	return DataTypeConstant.DAO;
+	return DataTypeConstant.DAOIMPL;
     }
 
-    private BaseDaoProcessor() {
+    private BaseDaoImplProcessor() {
 
     }
 
-    public static BaseDaoProcessor getInstance() {
+    public static BaseDaoImplProcessor getInstance() {
 	return processor;
     }
 

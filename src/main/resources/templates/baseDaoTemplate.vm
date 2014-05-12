@@ -1,0 +1,16 @@
+package $daoPath;
+
+import $entityPath.$className;
+#set($left = "(")
+#set($right = ")")
+
+/**
+ * 
+ * @author 
+ * @date $date
+ */
+public interface $daoInterfaceName {	
+	
+	public $className selectByPrimaryKey($idType $idVar);
+
+}

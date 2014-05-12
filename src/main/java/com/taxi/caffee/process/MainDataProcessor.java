@@ -25,19 +25,22 @@ public class MainDataProcessor {
 	List<Integer> select = null;
 	if (no == null || no.length == 0) {
 	    select = Arrays.asList(DataTypeConstant.DAO, DataTypeConstant.ENTITY,
-		    DataTypeConstant.MAPPERXML);
+		    DataTypeConstant.MAPPERXML, DataTypeConstant.DAOIMPL);
 	} else {
 	    select = Arrays.asList(no);
 	}
 	processors = new ArrayList<DataProcessor>(select.size());
 	if (select.contains(DataTypeConstant.DAO)) {
-//	    processors.add(BaseDaoProcessor.getInstance());
+	    processors.add(BaseDaoProcessor.getInstance());
 	}
 	if (select.contains(DataTypeConstant.ENTITY)) {
 	    processors.add(BaseEntityProcessor.getInstance());
 	}
 	if (select.contains(DataTypeConstant.MAPPERXML)) {
 	    processors.add(BaseMapperXmlProcessor.getInstance());
+	}
+	if (select.contains(DataTypeConstant.DAOIMPL)) {
+	    processors.add(BaseDaoImplProcessor.getInstance());
 	}
 	isInitialize = true;
     }
@@ -69,15 +72,25 @@ public class MainDataProcessor {
 
 	String className = DataProcessUtil.tableToClass(data.getTableName());
 	String baseClassName = "Base" + className;
+	String daoInterfaceName = className + "Dao";
+	String daoClassName = daoInterfaceName + "Impl";
+	String entityPath = data.getRootPath() + ".entity";
+	String daoPath = data.getRootPath() + ".dao";
+	String daoImplPath = data.getRootPath() + ".dao.impl";
 	params.put("rootPath", data.getRootPath());
 	params.put("props", props);
-	params.put("entity", data.getRootPath() + "." + className);
-	params.put("namespace", data.getRootPath() + "." + className + "Dao");
+	params.put("entity", entityPath + "." + className);
+	params.put("namespace", daoPath + "." + daoInterfaceName);
 	params.put("tableRemarks", data.getTableRemarks());
 	params.put("tableName", data.getTableName());
 	params.put("idName", data.getPrimaryKey());
 	params.put("className", className);
-	params.put("baseClassName", baseClassName);
+	params.put("baseClassName", baseClassName); //
+	params.put("daoInterfaceName", daoInterfaceName);	
+	params.put("daoClassName", daoClassName);
+	params.put("entityPath", entityPath);
+	params.put("daoPath", daoPath);
+	params.put("daoImplPath", daoImplPath);
 	params.put("imports", new ArrayList<String>(importSet));
 	params.put("date", DateFormat.getDateInstance().format(new Date()));
 	for (DataProcessor processor : processors) {

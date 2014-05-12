@@ -7,4 +7,6 @@ public class DataTypeConstant {
     public static Integer ENTITY = 1;
     
     public static Integer MAPPERXML = 2;
+    
+    public static Integer DAOIMPL = 3;
 }

@@ -1,0 +1,21 @@
+package $daoImplPath;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import $entityPath.$className;
+#set($left = "(")
+#set($right = ")")
+
+/**
+
+ * @author 
+ * @date $date
+ */
+public class $daoClassName implements $daoInterfaceName {	
+	
+	private SqlSession sqlSession;
+	
+	public $className selectByPrimaryKey($idType $idVar) {
+		return sqlSession.selectOne("selectByPrimaryKey", $idVar);
+	}
+
+}
