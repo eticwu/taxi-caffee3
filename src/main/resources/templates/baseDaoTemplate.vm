@@ -12,5 +12,9 @@ import $entityPath.$className;
 public interface $daoInterfaceName {	
 	
 	public $className selectByPrimaryKey($idType $idVar);
+	
+	public int insert($className entity);
+	
+	public int update($className entity);
 
 }

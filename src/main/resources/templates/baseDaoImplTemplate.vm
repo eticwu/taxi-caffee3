@@ -1,12 +1,13 @@
 package $daoImplPath;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSession;
 import $entityPath.$className;
+import $daoPath.$daoInterfaceName;
 #set($left = "(")
 #set($right = ")")
 
 /**
-
+ *
  * @author 
  * @date $date
  */
@@ -15,7 +16,24 @@ public class $daoClassName implements $daoInterfaceName {
 	private SqlSession sqlSession;
 	
 	public $className selectByPrimaryKey($idType $idVar) {
-		return sqlSession.selectOne("selectByPrimaryKey", $idVar);
+		if ($idVar == null) {
+			return null;
+		}
+		return sqlSession.selectOne("$className.selectByPrimaryKey", $idVar);
+	}
+	
+	public int insert($className entity) {
+		if (entity == null) {
+			return 0;
+		}
+		return sqlSession.insert("$className.insert", entity);
+	}
+	
+	public int update($className entity) {
+		if (entity == null) {
+			return 0;
+		}
+		return sqlSession.update("$className.update", entity);
 	}
 
 }

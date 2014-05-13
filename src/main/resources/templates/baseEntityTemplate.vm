@@ -1,14 +1,14 @@
 package $entityPath;
 
 #foreach($import in $imports)
-import $import
+import $import;
 #end
 #set($left = "(")
 #set($right = ")")
 
 /**
  * $tableRemarks
- * @author eticwu
+ * @author
  * @date $date
  */
 public class $className {	

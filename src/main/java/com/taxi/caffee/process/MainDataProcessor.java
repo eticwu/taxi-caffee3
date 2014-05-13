@@ -66,6 +66,7 @@ public class MainDataProcessor {
 	    if (column.getIsPK()) {
 		params.put("idVar", propName);
 		params.put("idType", propType);
+		params.put("idFullType", DataProcessUtil.getJavaFullType(propType));
 	    }
 	    props.add(prop);
 	}
